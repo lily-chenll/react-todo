@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import AddTodo from './AddTodo';
 
 class App extends Component {
   constructor(props) {
@@ -9,6 +10,7 @@ class App extends Component {
       todoList: [],
       showFilter: 'all',
     };
+    this.input = React.createRef();
   };
 
   addTodo = () => {
@@ -68,13 +70,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <div className="searchContainer">
-          <input
-            size="45"
-            ref={ (input) => {this.input = input} }>
-          </input>
-          <button onClick={ this.addTodo }>Add Todo</button>
-        </div>
+        <AddTodo input={ref => (this.input = ref)} onClick={this.addTodo}></AddTodo>
         <div className="todoList">
           <ul>{ list }</ul>
         </div>
