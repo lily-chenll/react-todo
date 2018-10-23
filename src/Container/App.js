@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import AddTodo from './AddTodo';
+import TodoList from './TodoList';
 
 class App extends Component {
   constructor(props) {
@@ -62,18 +63,10 @@ class App extends Component {
   };
  
   render() {
-    const list = this.getStatusList().map((item) => {
-      return (
-        <li key={item.id} onClick={() => this.handleClickTodo(item.id) } className= {item.completed ? 'lineThrough' : ''}>{item.value}</li>
-      )
-    });
-
     return (
       <div className="App">
-        <AddTodo input={ref => (this.input = ref)} onClick={this.addTodo}></AddTodo>
-        <div className="todoList">
-          <ul>{ list }</ul>
-        </div>
+        <AddTodo input={ref => (this.input = ref)} onClick={this.addTodo} />
+        <TodoList list={this.getStatusList()} onClick={(id) => this.handleClickTodo(id)}/>
         <div className="statusList">
           <span>show filter: </span>
           <button onClick={() => this.changeStatus('all')}>all</button>

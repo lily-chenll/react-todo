@@ -8,10 +8,6 @@
   align-content: center;
 }
 
-.lineThrough {
-  text-decoration: line-through;
-}
-
 .statusList {
   flex: 1;
   flex-direction: column;
